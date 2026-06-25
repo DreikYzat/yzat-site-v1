@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yzat Studio Digital</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.25) 0%, transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(56,189,248,0.15) 0%, transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(59,130,246,0.12) 0%, transparent 40%),
+        linear-gradient(135deg,#030712,#071428,#020617);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 15px;
+    }
+
+    .hero span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 720px;
+      margin: 0 auto 30px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #25d366, #16a34a);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .title p {
+      color: #94a3b8;
+    }
+
+    .cards,
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card,
+    .work {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 22px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      transition: 0.3s;
+      overflow: hidden;
+    }
+
+    .card {
+      padding: 30px;
+    }
+
+    .card:hover,
+    .work:hover {
+      transform: translateY(-10px);
+      border-color: #38bdf8;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #38bdf8;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .about {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 30px;
+      padding: 50px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .about p {
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .work img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: #0f172a;
+    }
+
+    .work h3 {
+      padding: 18px 20px 5px;
+      color: #38bdf8;
+      text-align: center;
+    }
+
+    .work p {
+      padding: 0 20px 22px;
+      color: #cbd5e1;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .price {
+      text-align: center;
+    }
+
+    .price h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .price strong {
+      color: #22c55e;
+      font-size: 1.6rem;
+    }
+
+    .feedbacks .card {
+      text-align: center;
+    }
+
+    .stars {
+      color: #facc15;
+      font-size: 1.3rem;
+      margin: 15px 0;
+    }
+
+    .contact {
+      text-align: center;
+      background:
+        linear-gradient(rgba(7, 11, 22, 0.85), rgba(7, 11, 22, 0.95)),
+        radial-gradient(circle at center, #16a34a, transparent 35%);
+    }
+
+    .contact p {
+      color: #cbd5e1;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: #020617;
+      text-align: center;
+      padding: 25px;
+      color: #94a3b8;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: #25d366;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+      z-index: 999;
+      animation: pulse 1.7s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .reveal {
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .title h2 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+
+      .about {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero reveal">
+      <h1>Yzat <span>Studio Digital</span></h1>
+      <p>
+        Edição de imagens, criação de logos e sites profissionais
+        para transformar sua ideia em uma marca forte e chamativa.
+      </p>
+      <a class="btn" href="https://wa.me/5561981666353" target="_blank">
+        Solicitar Orçamento
+      </a>
+    </div>
+  </header>
+
+  <section>
+    <div class="title">
+      <h2>Nossos Serviços</h2>
+      <p>Soluções digitais para sua marca se destacar.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal">
+        <h3>🎨 Edição de Imagens</h3>
+        <p>Tratamento, montagens, remoção de fundo, melhorias visuais, artes para redes sociais e imagens profissionais.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>🖌️ Criação de Logos</h3>
+        <p>Logos modernas, criativas e personalizadas para empresas, lojas, perfis profissionais e projetos digitais.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>💻 Criação de Sites</h3>
+        <p>Sites bonitos, rápidos, responsivos e preparados para divulgar seus serviços de forma profissional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Sobre a Yzat</h2>
+      <p>Design, criatividade e tecnologia em um só lugar.</p>
+    </div>
+
+    <div class="about reveal">
+      <p>
+        A <strong>Yzat Studio Digital</strong> nasceu para ajudar marcas,
+        empreendedores e criadores de conteúdo a terem uma presença visual
+        mais profissional. Nosso foco é criar imagens, logos e sites que
+        chamam atenção, passam confiança e ajudam você a conquistar clientes.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Trabalhos Realizados</h2>
+      <p>Espaço para postar suas imagens, logos e edições.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="work">
+        <img src="edicao_profissional.png" alt="Edição de imagem">
+
+        <h3>Edição Profissional</h3>
+        <p>Coloque aqui uma edição feita por você.</p>
+      </div>
+
+      <div class="work">
+        <img src="criacao.png" alt="Logo criada">
+        <h3>Criação de Logo</h3>
+        <p>Mostre aqui uma logo criada para cliente.</p>
+      </div>
+
+      <div class="work">
+        <img src="arte_divulgacao.png" alt="Arte digital">
+        <h3>Arte para Divulgação</h3>
+        <p>Publique artes para redes sociais ou anúncios.</p>
+      </div>
+
+      <div class="work">
+        <img src="criacao_site.png" alt="Site criado">
+        <h3>Criação de Site</h3>
+        <p>Mostre páginas ou sites feitos pela Yzat.</p>
+      </div>
+
+      <div class="work">
+        <img src="montagem_visual.png" alt="Montagem profissional">
+        <h3>Montagem Visual</h3>
+        <p>Espaço para montagens, banners e thumbnails.</p>
+      </div>
+
+      <div class="work">
+        <img src="identidade_visual.png" alt="Identidade visual">
+        <h3>Identidade Visual</h3>
+        <p>Mostre projetos completos de marca e visual.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feedbacks">
+    <div class="title">
+      <h2>Feedbacks de Clientes</h2>
+      <p>Veja o que podem dizer sobre a Yzat Studio Digital.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <p>“A edição ficou muito profissional, superou minhas expectativas!”</p>
+        <div class="stars">★★★★★</div>
+        <strong>Joana C.</strong>
+      </div>
+
+      <div class="card">
+        <p>“Minha logo ficou linda e bem moderna. Atendimento excelente.”</p>
+        <div class="stars">★★★★★</div>
+        <strong>Marcelo Freire</strong>
+      </div>
+
+      <div class="card">
+        <p>“O site ficou bonito, rápido e muito profissional.”</p>
+        <div class="stars">★★★★★</div>
+        <strong>Arnold</strong>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Planos</h2>
+      <p>Escolha o serviço ideal para você.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card price">
+        <h3>Imagem</h3>
+        <p>Edição simples ou arte personalizada.</p>
+        <br>
+        <strong>A partir de R$ 30</strong>
+      </div>
+
+      <div class="card price">
+        <h3>Logo</h3>
+        <p>Criação de logo profissional para sua marca.</p>
+        <br>
+        <strong>A partir de R$ 70</strong>
+      </div>
+
+      <div class="card price">
+        <h3>Site</h3>
+        <p>Site completo para divulgação dos seus serviços.</p>
+        <br>
+        <strong>A partir de R$ 200</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="title">
+      <h2>Vamos criar algo incrível?</h2>
+      <p>Chame agora no WhatsApp e solicite seu orçamento.</p>
+    </div>
+
+    <a class="btn" href="https://wa.me/5561981666353" target="_blank">
+      Falar no WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2026 Yzat Studio Digital - Todos os direitos reservados.</p>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5561981666353" target="_blank">
+    💬
+  </a>
+
+</body>
+</html>
